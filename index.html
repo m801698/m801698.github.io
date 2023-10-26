@@ -31,7 +31,13 @@
   <body>
     <button onclick="window.location.href = '/emma'">Emma Eisma | Page Expired</button>
     <button onclick="window.location.href = '/fakeupdate'">Fake Update</button>
-    <button onclick="window.location.href = '/fake/cloudflare'">Cloudflare 500 error</button
-    <button onclick="window.location.href = 'https://enderkries2011.github.io/unblocked/home'">Unblocked Games</button>
+    <button id="games">Unblocked Games</button>
+    <button onclick="window.location.href = '/fake/cloudflare'">Cloudflare 500 error</button>
+    
+    <script type="text/javascript">
+        document.getElementById("myButton").onclick = function () {
+            location.href = "https://enderkries2011.github.io/unblocked/home";
+        };
+    </script>
   </body>
 </html>
