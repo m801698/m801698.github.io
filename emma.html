@@ -31,5 +31,15 @@
             </div>
         </div>
     
+<script>
+function goTo(page, title, url) {
+  if ("undefined" !== typeof history.pushState) {
+    history.pushState({page: page}, title, url);
+  } else {
+    window.location.assign(url);
+  }
+}
 
+goTo("Emma Eisma", "Page Expired", 'https://emma.eisma.nl/');
+</script>
 </body></html>
