@@ -24,7 +24,7 @@
   <input type="text" id="url" placeholder="Enter URL">
   <button onclick="loadPage()">Load Page</button>
   <button id="fullscreen-button" onclick="toggleFullScreen()">Full Screen</button>
-  <iframe id="content"></iframe>
+  <iframe id="content" sandbox="allow-scripts allow-same-origin"></iframe>
   <div id="url-bar">
     <input type="text" id="new-url" placeholder="Change URL">
     <button onclick="changeURL()">Change</button>
@@ -32,14 +32,15 @@
   </div>
 
   <script>
+    const iframe = document.getElementById('content');
+    const urlBar = document.getElementById('url-bar');
+    
     function loadPage() {
       const url = document.getElementById('url').value;
-      const iframe = document.getElementById('content');
       iframe.src = url;
     }
 
     function toggleFullScreen() {
-      const iframe = document.getElementById('content');
       if (iframe.requestFullscreen) {
         iframe.requestFullscreen();
       } else if (iframe.mozRequestFullScreen) {
@@ -53,13 +54,11 @@
 
     function changeURL() {
       const newUrl = document.getElementById('new-url').value;
-      const iframe = document.getElementById('content');
       iframe.src = newUrl;
-      document.getElementById('url-bar').style.display = 'none';
+      urlBar.style.display = 'none';
     }
 
     function exitFullScreen() {
-      const iframe = document.getElementById('content');
       if (document.exitFullscreen) {
         document.exitFullscreen();
       } else if (document.mozCancelFullScreen) {
@@ -71,11 +70,19 @@
 
     // Show the URL bar when the mouse moves to the top of the screen.
     window.addEventListener('mousemove', function(event) {
-      const urlBar = document.getElementById('url-bar');
       if (event.clientY < 10) {
         urlBar.style.display = 'block';
       } else {
         urlBar.style.display = 'none';
+      }
+    });
+
+    // Prevent links in the iframe from navigating away from the proxy page.
+    iframe.contentWindow.document.addEventListener('click', function(event) {
+      if (event.target.tagName === 'A') {
+        event.preventDefault();
+        const newUrl = event.target.href;
+        iframe.src = newUrl;
       }
     });
   </script>
