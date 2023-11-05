@@ -56,7 +56,7 @@
                         // Display the search results
                         const resultsContainer = document.getElementById("search-results");
                         resultsContainer.innerHTML = "";
-                        results.forEach(result => {
+                        results.Results.forEach(result => {
                             const resultItem = document.createElement("div");
                             resultItem.innerHTML = `<a href="${result.FirstURL}" target="_blank">${result.Text}</a>`;
                             resultsContainer.appendChild(resultItem);
