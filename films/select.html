@@ -1,0 +1,44 @@
+<html>
+  <head>
+  <title>Films Selection</title>
+    <style>
+      body {
+            background: url("https://raw.githubusercontent.com/Enderkries2011/MCplus/main/home.jpg");
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+      
+      button {
+            margin: 5px;
+            margin-bottom: 10px;
+            background-color: transparent;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
+  </head>
+  <body>
+    <button onclick="window.location.href = '/films/spr'">Saving Private Ryan</button>
+    <button onclick="window.location.href = '/films/series/lordoftherings/the-two-towers'">The Lord of the Rings: The Two Towers</button>
+    <button onclick="window.location.href = '/films/series/lordoftherings/fellowship-of-the-ring'">The Lord of the Rings: The Fellowship of the Ring</button>
+    <button onclick="window.location.href = '/films/series/lordoftherings/return-king'">The Lord of the Rings: The Return of the King</button>
+    <button id="more">More Films</button>
+    
+    <script type="text/javascript">
+        document.getElementById("games").onclick = function () {
+            location.href = "https://enderkries2011.github.io/fims";
+        };
+    </script>
+  </body>
+</html>
